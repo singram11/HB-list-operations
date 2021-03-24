@@ -168,8 +168,11 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    count = 0
+    for item in input_list: 
+        if item == value:
+            count+=1
+    return count
 
 
 def custom_reverse(input_list):
@@ -187,9 +190,14 @@ def custom_reverse(input_list):
         True
 
     """
-
-    pass
-
+    length = custom_len(input_list)
+    count = 2
+    while count < length + 1:
+        custom_append(input_list, input_list[length - count])
+        count +=1
+    del input_list[0:(length-1)]
+ 
+    
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
@@ -208,8 +216,11 @@ def custom_contains(input_list, value):
 
     """
 
-    return None
+    for num in input_list:
+        if num == value:
+            return True   
 
+    return False
 
 def custom_equality(some_list, another_list):
     """Return True if passed lists are identical, False otherwise.
@@ -226,8 +237,21 @@ def custom_equality(some_list, another_list):
         False
 
     """
+    length = custom_len(some_list)
+    second_length = custom_len(another_list)
+    count = 0
 
-    return None
+    if length != second_length:
+        return False
+
+    while count < length:
+        if some_list[count] != another_list[count]:
+        
+            return False
+
+        count +=1
+    
+    return True
 
 
 # This is the part were we actually run the doctests.
